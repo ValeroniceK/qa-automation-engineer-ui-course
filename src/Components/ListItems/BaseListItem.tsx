@@ -7,6 +7,7 @@ type BaseListItemProps = {
   dense?: boolean;
   title?: ReactNode;
   label?: ReactNode;
+  testId: string;
   avatar?: ReactNode;
   disabled?: boolean;
   subtitle?: string;
@@ -15,14 +16,18 @@ type BaseListItemProps = {
 };
 
 export const BaseListItem: FC<BaseListItemProps> = (props) => {
-  const { menu, icon, dense = false, label, avatar, title, subtitle, disabled, selected, onClick } = props;
+  const { testId, icon, avatar, title, subtitle, label, ...rest } = props;
 
   return (
-    <ListItem dense={dense} secondaryAction={menu} divider disableGutters sx={{ pr: 0 }}>
-      <ListItemButton selected={selected} disabled={disabled} onClick={onClick}>
-        {icon && <ListItemIcon>{icon}</ListItemIcon>}
-        {avatar && <ListItemAvatar>{avatar}</ListItemAvatar>}
-        <ListItemText primary={title} secondary={subtitle} />
+    <ListItem dense={rest.dense} secondaryAction={rest.menu} divider disableGutters sx={{ pr: 0 }}>
+      <ListItemButton
+        selected={rest.selected}
+        disabled={rest.disabled}
+        onClick={rest.onClick}
+        data-test-id={`${testId}-list-item-button`}>
+        {icon && <ListItemIcon data-test-id={`${testId}-list-item-icon`}>{icon}</ListItemIcon>}
+        {avatar && <ListItemAvatar data-test-id={`${testId}-list-item-avatar-icon`}>{avatar}</ListItemAvatar>}
+        <ListItemText data-test-id={`${testId}-list-item-text`} primary={title} secondary={subtitle} />
         {label}
       </ListItemButton>
     </ListItem>

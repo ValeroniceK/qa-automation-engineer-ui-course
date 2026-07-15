@@ -10,6 +10,7 @@ export const WelcomeSubscriptionView = () => {
         <Grid2 size={{ md: 6, xs: 12 }}>
           <BaseInfoView
             title={'Subscribe to news!'}
+            testId={'subscription'}
             description={'Get updates about new topics and workshops directly to your inbox.'}
           />
         </Grid2>
