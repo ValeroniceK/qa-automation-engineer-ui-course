@@ -4,8 +4,9 @@ import { FC } from 'react';
 
 type Props = {
   title: string;
+  testId: string;
 };
 
-export const WelcomeTopicListItem: FC<Props> = ({ title }) => {
-  return <BaseListItem icon={<CheckIcon fontSize={'small'} />} title={title} />;
+export const WelcomeTopicListItem: FC<Props> = ({ title, testId }) => {
+  return <BaseListItem icon={<CheckIcon fontSize={'small'} />} title={title} testId={`${testId}-welcome-topic`} />;
 };
